@@ -19,16 +19,16 @@ estado_de_cuenta = [
 #Venta total por todas las tiendas
 venta_total = 0
 
-for fila in range(1, len(estado_de_cuenta)): #Evalúa para cada fila a partir de la 1
-    for columna in range(1, len(estado_de_cuenta[1])): #Evalúa para cada columna a partir de la 1
-        venta_total += (estado_de_cuenta[fila])[columna]
+for fila in estado_de_cuenta[1:5]: #Evalúa las filas de la 1 a la 4
+    venta_total += sum(fila[1:7]) #Suma las columnas de la 1 a la 6 y almacena el valor
 
 #Venta total por tienda
 venta_por_tienda = [0]*4 #Crea una lista para almacenar los valores
 
-for fila in range(1, len(estado_de_cuenta)): #Evalúa para cada fila a partir de la 1
-    for columna in range(1, len(estado_de_cuenta[1])): #Evalúa para cada columna a partir de la 1
-        venta_por_tienda[fila-1] += (estado_de_cuenta[fila])[columna] #Suma a la lista
+i=0 #Crea variable iteradora
+for fila in estado_de_cuenta[1:5]:
+    venta_por_tienda[i] = sum(fila[1:7]) #Suma a venta_por_tienda la suma de la fila
+    i += 1
 
 #Tienda que más vendió en los 6 meses
 tienda_mayor_venta = f"ABSA {venta_por_tienda.index(max(venta_por_tienda)) + 1}" #Obtiene el índice del valor máx + 1 y lo almacena junto con ABSA
